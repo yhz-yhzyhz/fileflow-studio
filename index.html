@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="序流自动化提供 PDF/Excel 数据提取、文件批量整理和 Windows 自动化工具定制，按样本确认范围，提供固定报价。">
+  <meta name="theme-color" content="#14201b">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="序流自动化｜PDF、Excel 与文件流程定制">
+  <meta property="og:description" content="把重复的 PDF、Excel 和文件整理工作，做成可重复运行的 Windows 小工具。">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "序流自动化",
+      "description": "面向老师、小商家与小团队的 PDF、Excel 和文件流程自动化服务。",
+      "areaServed": "CN",
+      "priceRange": "¥299-¥1499+",
+      "availableLanguage": "zh-CN",
+      "slogan": "微信咨询：yhzyhz2007"
+    }
+  </script>
+  <title>序流自动化｜PDF、Excel 与文件流程定制</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14"></path>
+      <path d="m12 5 7 7-7 7"></path>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6 9 17l-5-5"></path>
+    </symbol>
+    <symbol id="i-file-text" viewBox="0 0 24 24">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+      <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+      <path d="M10 9H8"></path>
+      <path d="M16 13H8"></path>
+      <path d="M16 17H8"></path>
+    </symbol>
+    <symbol id="i-table" viewBox="0 0 24 24">
+      <path d="M9 3H5a2 2 0 0 0-2 2v4"></path>
+      <path d="M9 3h10a2 2 0 0 1 2 2v4"></path>
+      <path d="M9 3v18"></path>
+      <path d="M9 21h10a2 2 0 0 0 2-2V9"></path>
+      <path d="M9 21H5a2 2 0 0 1-2-2V9"></path>
+      <path d="M3 9h18"></path>
+    </symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24">
+      <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path>
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <path d="m18 16 4-4-4-4"></path>
+      <path d="m6 8-4 4 4 4"></path>
+      <path d="m14.5 4-5 16"></path>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"></path>
+      <path d="m9 12 2 2 4-4"></path>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 7v5l3 2"></path>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24">
+      <rect width="14" height="14" x="8" y="8" rx="2"></rect>
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <path d="m7 10 5 5 5-5"></path>
+      <path d="M12 15V3"></path>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M18 6 6 18"></path>
+      <path d="m6 6 12 12"></path>
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6"></path>
+    </symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24">
+      <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+      <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+      <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+      <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+      <path d="M7 12h10"></path>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path d="M3 3v18h18"></path>
+      <path d="M7 16v-5"></path>
+      <path d="M12 16V7"></path>
+      <path d="M17 16v-3"></path>
+    </symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24">
+      <path d="M13 2 3 14h9l-1 8 10-12h-9Z"></path>
+    </symbol>
+  </svg>
+
+  <div class="announcement">
+    <span class="announcement-dot"></span>
+    <span>标准项目 ¥299 起 · 提交 2 份脱敏样本 · 24 小时内反馈可行性</span>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="序流自动化首页">
+        <span class="brand-mark">序</span>
+        <span class="brand-copy">
+          <strong>序流</strong>
+          <small>FILE AUTOMATION</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#services">服务</a>
+        <a href="#demos">案例</a>
+        <a href="#estimate">报价</a>
+        <a href="#process">流程</a>
+      </nav>
+      <button class="button button-small button-ink" type="button" data-open-inquiry>
+        提交样本
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span>PDF</span> / <span>EXCEL</span> / <span>FILES</span></p>
+        <h1>把重复的文件处理，<em>变成双击运行。</em></h1>
+        <p class="hero-lead">
+          面向老师、小商家和小团队，定制可重复运行的 Windows 小工具。
+          不改原文件，不靠手工复制粘贴，异常文件单独记录。
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#estimate">
+            获取项目报价
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </a>
+          <a class="button button-ghost" href="#demos">
+            查看脱敏案例
+          </a>
+        </div>
+        <ul class="hero-checks" aria-label="交付承诺">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>先看样本再报价</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>固定范围与交付时间</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>7 天问题修复</li>
+        </ul>
+      </div>
+
+      <div class="workbench reveal" aria-label="文件自动化工作台预览">
+        <div class="workbench-top">
+          <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="workbench-title">JOB_024 / invoice_sync</span>
+          <span class="workbench-status"><i></i>READY</span>
+        </div>
+        <div class="workbench-body">
+          <div class="workbench-section">
+            <div class="workbench-label">
+              <span>输入 / 112 files</span>
+              <span>PDF</span>
+            </div>
+            <div class="file-stack">
+              <div class="file-row"><svg class="icon" aria-hidden="true"><use href="#i-file-text"></use></svg><span>2026-09_采购发票.pdf</span><b>OK</b></div>
+              <div class="file-row"><svg class="icon" aria-hidden="true"><use href="#i-file-text"></use></svg><span>供应商A_发票_0924.pdf</span><b>OK</b></div>
+              <div class="file-row"><svg class="icon" aria-hidden="true"><use href="#i-file-text"></use></svg><span>扫描件_0091.pdf</span><b>OK</b></div>
+              <div class="file-row file-row-dim"><svg class="icon" aria-hidden="true"><use href="#i-file-text"></use></svg><span>... 还有 109 份</span><b>QUEUE</b></div>
+            </div>
+          </div>
+
+          <div class="pipeline">
+            <div class="pipeline-step is-done"><span>01</span><div><strong>读取字段</strong><small>日期 / 供应商 / 金额</small></div><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></div>
+            <div class="pipeline-step is-done"><span>02</span><div><strong>校验数据</strong><small>缺失与重复自动标记</small></div><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></div>
+            <div class="pipeline-step is-active"><span>03</span><div><strong>导出工作簿</strong><small>正在生成 Excel...</small></div><svg class="icon" aria-hidden="true"><use href="#i-scan"></use></svg></div>
+          </div>
+
+          <div class="output-window">
+            <div class="output-head">
+              <div><span class="output-kicker">OUTPUT</span><strong>发票汇总_2026Q3.xlsx</strong></div>
+              <span class="output-badge">112 rows</span>
+            </div>
+            <div class="mini-table" role="table" aria-label="输出示例">
+              <div class="mini-row mini-head" role="row"><span>日期</span><span>供应商</span><span>金额</span><span>状态</span></div>
+              <div class="mini-row" role="row"><span>09-24</span><span>瑞成包装</span><span>¥2,480</span><span class="status-pass">已校验</span></div>
+              <div class="mini-row" role="row"><span>09-25</span><span>东岸物流</span><span>¥860</span><span class="status-pass">已校验</span></div>
+              <div class="mini-row" role="row"><span>09-26</span><span>林记办公</span><span>¥1,120</span><span class="status-warn">待确认</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="workbench-foot">
+          <span><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>本地处理，原文件只读</span>
+          <span>00:18 <i class="progress-line"></i></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-band" aria-label="服务承诺">
+      <div class="shell trust-grid">
+        <div><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg><strong>不改原件</strong><span>源文件只读，输出到新文件夹</span></div>
+        <div><svg class="icon" aria-hidden="true"><use href="#i-file-text"></use></svg><strong>Windows 可运行</strong><span>交付 exe，不要求安装 Python</span></div>
+        <div><svg class="icon" aria-hidden="true"><use href="#i-scan"></use></svg><strong>异常单独记录</strong><span>坏文件不拖垮整批处理</span></div>
+        <div><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg><strong>范围先写清</strong><span>报价、修改和交付时间固定</span></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="services">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">SERVICES / 01</p>
+          <h2>四类常见流程，按交付结果报价</h2>
+        </div>
+        <p>计价依据是你最终得到的文件、报表和可重复流程，而不是代码行数。</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-item reveal">
+          <div class="service-top">
+            <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg></span>
+            <span class="service-index">01</span>
+          </div>
+          <h3>PDF / 发票字段提取</h3>
+          <p>从发票、订单、报价单里提取日期、公司、金额和编号，汇总成一个可筛选 Excel。</p>
+          <div class="service-meta"><span>¥699 起</span><span>适合 50-300 份/批</span></div>
+          <button class="text-button" type="button" data-task="extract">
+            获取此项目报价
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+        </article>
+
+        <article class="service-item reveal">
+          <div class="service-top">
+            <span class="service-icon service-icon-teal"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></span>
+            <span class="service-index">02</span>
+          </div>
+          <h3>Excel 合并与月报</h3>
+          <p>把多张销售表、成绩表或实验数据合并、清洗，自动生成汇总表和趋势图。</p>
+          <div class="service-meta"><span>¥999 起</span><span>适合月度重复流程</span></div>
+          <button class="text-button" type="button" data-task="report">
+            获取此项目报价
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+        </article>
+
+        <article class="service-item reveal">
+          <div class="service-top">
+            <span class="service-icon service-icon-orange"><svg class="icon" aria-hidden="true"><use href="#i-folder"></use></svg></span>
+            <span class="service-index">03</span>
+          </div>
+          <h3>批量文件整理</h3>
+          <p>按规则重命名、合并、拆分和归档，同时生成一份可追溯的索引表。</p>
+          <div class="service-meta"><span>¥299 起</span><span>适合教师与行政</span></div>
+          <button class="text-button" type="button" data-task="tidy">
+            获取此项目报价
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+        </article>
+
+        <article class="service-item reveal">
+          <div class="service-top">
+            <span class="service-icon service-icon-ink"><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
+            <span class="service-index">04</span>
+          </div>
+          <h3>定制工作流</h3>
+          <p>把多个重复步骤串成一个工具：读取文件、处理数据、生成报表、发送归档。</p>
+          <div class="service-meta"><span>¥1,499 起</span><span>适合固定业务流程</span></div>
+          <button class="text-button" type="button" data-task="custom">
+            获取此项目报价
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section class="demo-band" id="demos">
+      <div class="shell demo-layout">
+        <div class="demo-copy reveal">
+          <p class="section-kicker section-kicker-light">OUTPUT / 02</p>
+          <h2>不是一句“能做”，<br>先看输出。</h2>
+          <p>以下为脱敏示例。真实项目先处理 10 份样本，确认字段和异常规则后再跑全量。</p>
+          <div class="demo-tabs" role="tablist" aria-label="案例切换">
+            <button type="button" role="tab" aria-selected="true" aria-controls="demo-panel" data-demo="invoice">
+              <span>01</span><div><strong>发票 PDF → Excel</strong><small>字段提取与金额校验</small></div>
+            </button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="demo-panel" data-demo="report">
+              <span>02</span><div><strong>12 个月销售表 → 月报</strong><small>合并、汇总、趋势图</small></div>
+            </button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="demo-panel" data-demo="archive">
+              <span>03</span><div><strong>328 个文件 → 归档索引</strong><small>改名、合并、可追溯</small></div>
+            </button>
+          </div>
+        </div>
+
+        <div class="demo-panel reveal" id="demo-panel" role="tabpanel" aria-live="polite">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="estimate">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">QUOTE / 03</p>
+          <h2>输入文件情况，获得标准报价。</h2>
+        </div>
+        <p>报价按当前描述计算。样本与描述一致时按此价执行，新增格式、字段或规则会书面补差。</p>
+      </div>
+
+      <div class="quote-layout reveal">
+        <div class="quote-controls">
+          <fieldset class="control-group">
+            <legend>你要处理什么？</legend>
+            <div class="task-picker">
+              <button type="button" data-task="tidy"><svg class="icon" aria-hidden="true"><use href="#i-folder"></use></svg><span>文件整理<small>改名 / 合并 / 归档</small></span></button>
+              <button type="button" class="is-selected" data-task="extract"><svg class="icon" aria-hidden="true"><use href="#i-table"></use></svg><span>数据提取<small>PDF / 发票 / 表格</small></span></button>
+              <button type="button" data-task="report"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg><span>自动报表<small>Excel / 汇总 / 图表</small></span></button>
+              <button type="button" data-task="custom"><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg><span>定制流程<small>多个步骤串起来</small></span></button>
+            </div>
+          </fieldset>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label for="file-count">每批大约多少份文件？</label>
+              <output id="file-count-output" for="file-count">50 份</output>
+            </div>
+            <input id="file-count" class="range" type="range" min="10" max="600" step="10" value="50">
+            <div class="range-labels"><span>10</span><span>200</span><span>400</span><span>600+</span></div>
+          </div>
+
+          <fieldset class="control-group">
+            <legend>有没有这些附加情况？</legend>
+            <div class="option-list">
+              <label class="check-option"><input type="checkbox" id="option-ocr"><span><strong>扫描件 / 图片识别</strong><small>需要 OCR，先看样本准确率</small></span><b>+¥300</b></label>
+              <label class="check-option"><input type="checkbox" id="option-gui"><span><strong>需要简单操作界面</strong><small>选择文件夹、显示处理进度</small></span><b>+¥200</b></label>
+              <label class="check-option"><input type="checkbox" id="option-monthly"><span><strong>需要月度重复报表</strong><small>模板化输出，后续可维护</small></span><b>+¥300</b></label>
+              <label class="check-option"><input type="checkbox" id="option-rush"><span><strong>48 小时内要首版</strong><small>需要优先排期</small></span><b>×1.3</b></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <aside class="quote-summary" aria-live="polite">
+          <div class="quote-summary-top">
+            <p>标准项目报价</p>
+            <span class="quote-tag">含 1 次修改</span>
+          </div>
+          <div class="quote-price"><span>¥</span><strong id="quote-price">699</strong><em>含 7 天问题修复</em></div>
+          <p class="quote-caption">样本与当前描述一致时按此价格执行；报价有效期 7 天。</p>
+          <div class="quote-breakdown" id="quote-breakdown"></div>
+          <button class="button button-primary button-full" type="button" data-open-inquiry>
+            生成项目报价单
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+          <p class="quote-fineprint"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>网页只生成报价文字，不上传文件。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="process-section" id="process">
+      <div class="shell">
+        <div class="section-head section-head-light reveal">
+          <div>
+            <p class="section-kicker section-kicker-light">PROCESS / 04</p>
+            <h2>从样本到交付，只有四步。</h2>
+          </div>
+          <p>先把“例外情况”讲清楚，后面的交付才不会变成无限修改。</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-step reveal"><span>01</span><h3>发 2 份脱敏样本</h3><p>说明输入格式、数量、输出字段和最怕的错误。</p></div>
+          <div class="process-step reveal"><span>02</span><h3>24 小时内确认范围</h3><p>固定交付内容、时间、修改次数和总价。</p></div>
+          <div class="process-step reveal"><span>03</span><h3>先交 10 份小样</h3><p>字段和格式对了，再跑全量，避免整批返工。</p></div>
+          <div class="process-step reveal"><span>04</span><h3>交付 exe 与说明</h3><p>附带样例、日志、使用说明和 7 天问题修复。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">PACKAGES / 05</p>
+          <h2>三种标准交付方案。</h2>
+        </div>
+          <p>套餐内包含固定开发量，超出范围会单独书面报价。所有套餐都先确认样本与验收标准。</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card reveal">
+          <div class="price-card-head"><span>LIGHT</span><h3>轻量整理</h3><p>把一个重复的小动作做成脚本。</p></div>
+          <div class="price"><small>¥</small>299<em>起</em></div>
+          <ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>最多 100 个文件</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>改名 / 合并 / 归档</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>一份使用说明</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>1 次范围内容修改</li>
+          </ul>
+          <button class="button button-outline button-full" type="button" data-plan="tidy">选择轻量版</button>
+        </article>
+        <article class="price-card price-card-featured reveal">
+          <div class="price-badge">推荐</div>
+          <div class="price-card-head"><span>STANDARD</span><h3>数据提取</h3><p>把一批 PDF 或表格变成结构化结果。</p></div>
+          <div class="price"><small>¥</small>699<em>起</em></div>
+          <ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>最多 300 个文件</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>PDF / Excel 字段提取</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>异常清单与日志</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>exe + 样例输出</li>
+          </ul>
+          <button class="button button-primary button-full" type="button" data-plan="extract">选择标准版</button>
+        </article>
+        <article class="price-card reveal">
+          <div class="price-card-head"><span>CUSTOM</span><h3>定制工作流</h3><p>把多个输入、处理和输出串成一个工具。</p></div>
+          <div class="price"><small>¥</small>1,499<em>起</em></div>
+          <ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>多格式输入</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>自动报表或界面</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>2 次范围内容修改</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>14 天问题修复</li>
+          </ul>
+          <button class="button button-outline button-full" type="button" data-plan="custom">选择定制版</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell faq-section">
+      <div class="faq-copy reveal">
+        <p class="section-kicker">FAQ / 06</p>
+        <h2>先把边界说清楚。</h2>
+        <p>不接需要绕过登录或验证码的抓取，不处理来历不明的敏感数据，不做无限修改。</p>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>扫描件和图片能做吗？<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+          <p>可以做，但先看样本。清晰扫描件按 OCR 附加项报价；模糊、手写、复杂表格可能无法保证准确率，会先说明风险。</p>
+        </details>
+        <details>
+          <summary>我的文件数据安全吗？<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+          <p>优先本地处理，不修改原文件。演示和开发阶段只用脱敏样本；交付后默认 7 天内删除原始数据，除非你有书面要求保留。</p>
+        </details>
+        <details>
+          <summary>可以装在自己的 Windows 电脑上吗？<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+          <p>可以。交付 exe、使用说明和样例文件，不需要安装 Python。若公司电脑限制运行 exe，可以改成源码或脚本版本。</p>
+        </details>
+        <details>
+          <summary>后续改需求怎么收费？<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+          <p>套餐内包含一次范围内容修改。新增文件格式、字段、界面或持续维护，会单独报价，不在原报价里无限追加。</p>
+        </details>
+        <details>
+          <summary>为什么不按小时收费？<svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+          <p>你买的是一个可验收的结果，不是我的工时。固定范围能让双方都知道交付什么、什么时候交付、什么情况算完成。</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell final-cta-inner reveal">
+        <div>
+          <p class="section-kicker section-kicker-light">NEXT STEP</p>
+          <h2>先发两份样本。<br>24 小时内给你报价和执行范围。</h2>
+        </div>
+        <div class="final-cta-actions">
+          <button class="button button-light" type="button" data-open-inquiry>
+            生成报价单
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+          </button>
+          <div class="wechat-line">
+            <span>微信咨询</span>
+            <code>yhzyhz2007</code>
+            <button type="button" data-copy-wechat aria-label="复制微信号 yhzyhz2007">
+              <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+              复制
+            </button>
+          </div>
+          <p>样本确认后再支付 50% 定金，不需要先整理全部文件。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">序</span>
+        <div><strong>序流自动化</strong><span>把重复劳动，变成一键完成。</span></div>
+      </div>
+      <div class="footer-contact">
+        <span>微信</span>
+        <code>yhzyhz2007</code>
+        <button type="button" data-copy-wechat aria-label="复制微信号 yhzyhz2007">
+          <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+          复制
+        </button>
+      </div>
+      <p>© 2026 序流自动化 · 文件流程定制与交付</p>
+      <a href="#top">回到顶部 ↑</a>
+    </div>
+  </footer>
+
+  <dialog class="inquiry-dialog" id="inquiry-dialog" aria-labelledby="inquiry-title">
+    <div class="dialog-head">
+      <div>
+        <p class="section-kicker">PROJECT BRIEF</p>
+        <h2 id="inquiry-title">生成项目报价单</h2>
+        <p class="dialog-contact">也可以直接加微信 <code>yhzyhz2007</code><button type="button" data-copy-wechat>复制微信号</button></p>
+      </div>
+      <button class="icon-button" type="button" data-close-dialog aria-label="关闭">
+        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+      </button>
+    </div>
+
+    <form id="inquiry-form" class="inquiry-form">
+      <div class="form-row">
+        <label>怎么称呼你<input id="inquiry-name" name="name" type="text" placeholder="例如：王老师" required></label>
+        <label>微信或邮箱<input id="inquiry-contact" name="contact" type="text" placeholder="填写你的联系方式" required></label>
+      </div>
+      <div class="form-row">
+        <label>项目类型
+          <select id="inquiry-task" name="task">
+            <option value="tidy">文件批量整理</option>
+            <option value="extract">PDF / 发票字段提取</option>
+            <option value="report">Excel 合并与自动报表</option>
+            <option value="custom">定制工作流</option>
+          </select>
+        </label>
+        <label>大约多少份文件<input id="inquiry-volume" name="volume" type="number" min="1" max="10000" value="50"></label>
+      </div>
+      <div class="form-row">
+        <label>输入格式<input id="inquiry-input" name="input" type="text" placeholder="例如：PDF 发票、Excel 月表"></label>
+        <label>期望输出<input id="inquiry-output" name="output" type="text" placeholder="例如：一个 Excel 汇总表"></label>
+      </div>
+      <label>最需要解决的问题<textarea id="inquiry-notes" name="notes" rows="3" placeholder="例如：每月 300 份发票，人工复制要 3 小时，最怕金额漏掉。"></textarea></label>
+      <div class="form-actions">
+        <button class="button button-primary" type="submit">
+          生成报价单
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+        </button>
+        <p>报价单只在本机生成，不上传文件。</p>
+      </div>
+    </form>
+
+    <div class="brief-result" id="brief-result" hidden>
+      <div class="brief-result-head">
+        <div><span>READY TO SEND</span><h3>报价单已生成</h3></div>
+        <button class="text-button" type="button" id="edit-brief">返回修改</button>
+      </div>
+      <textarea id="brief-output" readonly rows="13" aria-label="生成的报价单"></textarea>
+      <div class="brief-actions">
+        <button class="button button-primary" type="button" id="copy-brief"><svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>复制报价单</button>
+        <button class="button button-outline" type="button" id="download-brief"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>下载 txt</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
